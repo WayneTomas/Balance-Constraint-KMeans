@@ -1,5 +1,6 @@
 # Balance-Constraint-KMeans
-The code for the paper "K-Means Clustering with Balance size Constraint"
+The code for the paper "K-Means Clustering with Balance size Constraint".
+The work of IGGI of Jiangsu University,China
 ## Summary
 This is all the source files used in the paper "K-Means Clustering with Balance size Constraint". 
 ### Description
