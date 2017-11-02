@@ -1,5 +1,6 @@
 clc;
 clear;
+%进行单次分配实验请去除注释
 % %Once Assignment statistic
 %     %Once Assignment statistic variable
 %  timeMe=[];
