@@ -2,7 +2,7 @@
 The code for the paper "K-Means Clustering with Balance size Constraint".
 The work of IGGI of Jiangsu University,China
 ## Summary
-This is all the source files used in the paper "K-Means Clustering with Balance size Constraint". 
+These are all the source files used in the paper "K-Means Clustering with Balance size Constraint". 
 ### Description
 #### Datasets
 Includes Iris,thyroid,wine and one AI datasets called S1
