@@ -11,9 +11,13 @@ Includes the results of single partition experiment and the results of 50 times 
 #### evaluation
 The codes files using in experiments to evaluate the reuslts of clustering,includes Accuracy(ACC)&Normalized Mutual Information.
 Thanks for the related work from http://www.cad.zju.edu.cn/home/dengcai/Data/Clustering.html
+
+
 Refences:
+
     Deng Cai, Xiaofei He, and Jiawei Han, "Document Clustering Using Locality Preserving Indexing", in IEEE TKDE, 2005.
     Bibtex source
+    
     Xinlei Chen, Deng Cai, "Large Scale Spectral Clustering with Landmark-Based Representation," AAAI 2011.
     Bibtex source 
 #### AssignmentByIntLinPro.m&&BalancedKmeansWithIntLinPro.m
