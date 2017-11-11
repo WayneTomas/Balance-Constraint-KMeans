@@ -1,4 +1,4 @@
-function [ MSE_best ] = BalancedKmeansWithKbs( data,k,nb )  
+function [ MSE_best,re ] = BalancedKmeansWithKbs( data,k,nb )  
 %matrix b is the row vector contains the points count that you want
 %initial some basic parameter
     MSE_best=inf;
@@ -6,6 +6,7 @@ function [ MSE_best ] = BalancedKmeansWithKbs( data,k,nb )
     na=[];             %count the points number of each cluster
     [dataLength,~]=size(data);
     a=zeros(dataLength,k);
+    re=zeros(dataLength,1);
     %run kmeans and idData is the column vector contains label of each point
     [idData,centroids]=kmeans(data,k);      
     for i=1:k
@@ -19,6 +20,10 @@ function [ MSE_best ] = BalancedKmeansWithKbs( data,k,nb )
         a(:,i)=a(:,i)*factor(i);
     end
     assignment=KbsAssignment(a',nb);
+    %计算标签标记值
+    for i=1:k
+        re(find(assignment(:,i)==1),1)=i;
+    end
     %calculate MSE
     for i=1:k
         clusterData=find(assignment(:,i)==1);

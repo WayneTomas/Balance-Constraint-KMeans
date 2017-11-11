@@ -74,17 +74,17 @@ clusterTime_Kbs=[];
 row=1;
 count=1;
 %start clustering processing
-for size=200:200:1000
+for size=200
     data{count}=round(rand(size,2)*100);
     colum=1;
-    for k=[3,9,21,45,93]
+    for k=[3]
         [~,u]=kmeanspp(data{count}',k);
         u=u';
-        %my algorithm
+        %the original author algorithm
         tic;
         [clusterMSE_S(row,colum),clusterCount_S(row,colum)]=balanced_kmeans(data{count},k,u);
         clusterTime_S(row,colum)=toc;
-        %the original author algorithm
+        %my algorithm
         tic;
         [ ~,~,clusterMSE_Me(row,colum),clusterCount_Me(row,colum)] = BalancedKmeansWithIntLinPro( data{count},k,u );
         clusterTime_Me(row,colum)=toc;
@@ -103,11 +103,11 @@ for size=200:200:1000
     count=count+1;
 end
 %%the two clustering variable difference
-%iterationNumDiff=clusterCount_S-clusterCount_Me;
-%mseClusterDiff=clusterMSE_S-clusterMSE_Me;
-%timeClusterDiff=clusterTime_S-clusterTime_Me;
-%%drawing the three clustering algorithm figure
-%iteration count figure
+iterationNumDiff=clusterCount_S-clusterCount_Me;
+mseClusterDiff=clusterMSE_S-clusterMSE_Me;
+timeClusterDiff=clusterTime_S-clusterTime_Me;
+%drawing the three clustering algorithm figure
+iteration count figure
 figure,iterationCountFig_S=bar3(clusterCount_S);
 title('clustering iteration count figure');
 set(iterationCountFig_S,'FaceColor','red');

@@ -1,11 +1,11 @@
-function [ assignment,cost ] = AssignmentByIntLinPro( costMat )
+function [ assignment,cost ] = SizeConsAssignIntLinPro( costMat,sizeConsMat )
     options = optimoptions('intlinprog','Display','off','RelativeGapTolerance',0);
     C=costMat';
     [m,n]=size(C);
     f=C(:);                     %目标函数系数矩阵（实际为列向量，intlinprog中得组织成列向量才能计算）
     intcon=(1:m*n)';            %限定所求X矩阵所有元素为整数
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%关于等式约束条件的构造说明%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
+%                                          
 % 在Blance-Constraint K-Means算法的数学建模中（我的原始版本的建模，参见V0.0.18之前版本的论文，与老师改过的公式
 %的区别在于，我的模型一行表示一个cluster，一列表示一个object，与老师的建模正好相反，而代码是按我的建模写的），
 %等式约束条件，用来表示X矩阵（分配矩阵）一列所有元素相加，只能等于1（其现实意义为：一个object只能属于一个cluster，如
@@ -47,19 +47,30 @@ function [ assignment,cost ] = AssignmentByIntLinPro( costMat )
 %     for i=1:n
 %         A(i+n,1+(i-1)*m:i*m)=ones(1,m);
 %     end
+%     for i=1:n
+%         b(1:n)=sizeConsMat(i)*-1;
+%         b(n+1:n*2)=sizeConsMat(i);
+%     end
     for i=1:n
         A(i,1+(i-1)*m:i*m)=ones(1,m)*-1;
         A(i+n,1+(i-1)*m:i*m)=ones(1,m);
+        b(1:n)=sizeConsMat(i)*-1;
+        b(n+1:n*2)=sizeConsMat(i);
     end
-    b(1:n)=floor(m/n)*-1;
-    b(n+1:n*2)=ceil(m/n);
     A=sparse(A);
+
 %   上下界限定
     lb=zeros(m*n,1);        %lb，low bounds，此处限定为0
     ub=ones(m*n,1);         %ub，upper bounds，此处限定为1。由于上面intcon已经限定了整个X矩阵为整数，且此处又限定
-                            %了X的上界与下界，所以即X的值只能取0或1，即0-1整数规划                         
+                            %了X的上界与下界，所以即X的值只能取0或1，即0-1整数规划     
+%   执行0-1整数规划函数intlinprog
     [X,cost]=intlinprog(f,intcon,A,b,Aeq,beq,lb,ub,options);
-    assignment=reshape(X,m,n);
-    assignment=assignment';
+    if(isempty(X))
+        mException=MException('Error:AssignmentMatrixEmpty',...
+            'There is no solution found of Size Constraint Clustering!');
+        throw(mException);
+    else
+        assignment=reshape(X,m,n);
+        assignment=assignment';
+    end
 end
-

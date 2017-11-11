@@ -1,4 +1,4 @@
-function [MSE_best,kmeans_iteration_number]=balanced_kmeans(X,k,u)
+function [MSE_best,kmeans_iteration_number,partition]=balanced_kmeans(X,k,u)
 % k=7;
 MSE_ITERATOR_S=[];
 repeat_num=1;
