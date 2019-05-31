@@ -8,7 +8,7 @@ The work was done by IGGI of Jiangsu University,China
 These are all the source files used in the paper of
 ```
 Tang, W.; Yang, Y.; Zeng, L.; Zhan, Y. Optimizing MSE for Clustering with Balanced Size Constraints. Symmetry 2019, 11, 338. 
-```. 
+``` 
 ### Description
 #### datasets
 Includes Iris,thyroid,wine and one AI datasets called S1
