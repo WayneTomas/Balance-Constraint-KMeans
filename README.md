@@ -79,19 +79,18 @@ Assign the data points using 0-1 integer programming to conduct size constraint 
 #### SizeConsStatistic.m
 Size Constraint related experiments
 
-```
 
+## Cite
+```bibtex
 @Article{sym11030338,
-AUTHOR = {Tang, Wei and Yang, Yang and Zeng, Lanling and Zhan, Yongzhao},
-TITLE = {Optimizing MSE for Clustering with Balanced Size Constraints},
-JOURNAL = {Symmetry},
-VOLUME = {11},
-YEAR = {2019},
-NUMBER = {3},
-ARTICLE-NUMBER = {338},
-URL = {https://www.mdpi.com/2073-8994/11/3/338},
-ISSN = {2073-8994},
-ABSTRACT = {Clustering is to group data so that the observations in the same group are more similar to each other than to those in other groups. k-means is a popular clustering algorithm in data mining. Its objective is to optimize the mean squared error (MSE). The traditional k-means algorithm is not suitable for applications where the sizes of clusters need to be balanced. Given n observations, our objective is to optimize the MSE under the constraint that the observations need to be evenly divided into k clusters. In this paper, we propose an iterative method for the task of clustering with balanced size constraints. Each iteration can be split into two steps, namely an assignment step and an update step. In the assignment step, the data are evenly assigned to each cluster. The balanced assignment task here is formulated as an integer linear program (ILP), and we prove that the constraint matrix of this ILP is totally unimodular. Thus the ILP is relaxed as a linear program (LP) which can be efficiently solved with the simplex algorithm. In the update step, the new centers are updated as the centroids of the observations in the clusters. Assuming that there are n observations and the algorithm needs m iterations to converge, we show that the average time complexity of the proposed algorithm is O ( m n 1.65 ) – O ( m n 1.70 ) . Experimental results indicate that, comparing with state-of-the-art methods, the proposed algorithm is efficient in deriving more accurate clustering.},
-DOI = {10.3390/sym11030338}
+author = {Tang, Wei and Yang, Yang and Zeng, Lanling and Zhan, Yongzhao},
+title = {Optimizing MSE for Clustering with Balanced Size Constraints},
+journal = {Symmetry},
+volumn = {11},
+year = {2019},
+number = {3},
 }
+```
+```
+paper link: https://www.mdpi.com/2073-8994/11/3/338
 ```
